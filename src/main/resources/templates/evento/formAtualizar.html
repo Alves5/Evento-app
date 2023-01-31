@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <title>Cadastrar Evento</title>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<header>
+  <nav class="menu">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Evento</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/home" class="waves-effect waves-light btn"><i class="material-icons left">home</i>Home</a></li>
+        <li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">list</i>Lista de eventos</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+  <h5>Cadastrar Evento</h5>
+
+  <form class="container" method="post">
+    <div th:each="evento : ${eventoAt}">
+      <input type="hidden" name="id" th:value="${evento.id}}" />
+      <th:block th:include="mensagemValidacao"></th:block>
+      <div class="row">
+        <div class="input-field col s12">
+          Nome: <input type="text" th:value="${evento.nome}}" name="nome"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          Local: <input type="text" th:value="${evento.local}}" name="local"/>
+        </div>
+        <div class="input-field col s3">
+          Data: <input type="date" th:value="${evento.dataEvento}}" name="dataEvento"/>
+        </div>
+        <div class="input-field col s3">
+          Horario: <input type="time" th:value="${evento.horaEvento}}" name="horaEvento"/>
+        </div>
+      </div>
+    </div>
+    <button class="waves-effect waves-light btn" type="submit">Salvar</button>
+
+  </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
